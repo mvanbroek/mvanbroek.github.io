@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- saved from url=(0101)https://s0.2mdn.net/5252016/1452280834248/728x90_VZW_PR_POST-HOLIDAY_650_GENERAL_SETB_0_010616_B.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript">
+    
+      (function() {
+        var relegateNavigation = '';
+        var handleClickTagMessage = function(e) {
+          try {
+            var eventData = JSON.parse(e.data);
+          } catch (err) {
+            return;
+          }
+          if (eventData.isInitClickTag) {
+            if (eventData.clickTags) {
+              for (var i = 0; i < eventData.clickTags.length; i++) {
+                var clkTag = eventData.clickTags[i];
+                window[clkTag.name] = clkTag.url;
+              }
+            } else if (eventData.clickTag) {
+              window.clickTag = eventData.clickTag;
+            }
+            relegateNavigation = eventData.relegateNavigation;
+          }
+        };
+
+        if (open.call) {
+          window.open = function(open) {
+            return function(url, name, features) {
+              if (relegateNavigation === 'parent') {
+                var message = {'clickTag': url, 'isPostClickTag': true};
+                parent.postMessage(JSON.stringify(message), '*');
+              } else {
+                var args = [url, name];
+                if (features) {
+                  args.push(features);
+                }
+                open.apply(window, args);
+              }
+            };
+          }(window.open);
+        }
+
+        if (window.addEventListener) {
+          window.addEventListener(
+              'message', handleClickTagMessage, false);
+        } else {
+          window.attachEvent('onmessage', handleClickTagMessage);
+        }
+      })();
+    
+  </script>
+        
+        <!-- Ad Banner information -->
+        <meta name="ad.size" content="width=728,height=90">
+        <meta name="viewport" content="width=728, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <!-- ********************** DoubleClick Enabler ********************** -->
+        <!-- https://support.google.com/richmedia/answer/2672545 -->
+        <!-- <script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script> -->
+        <!-- ***************************************************************** -->
+            <link rel="stylesheet" href="main.css">
+            </head>
+        <body>
+            <div id="ad__wrapper">
+                <div id="ad__content" style="display: block;">
+                    <!-- Your banner ad content goes here -->
+                    <div id="halfbg"></div>
+                    <div id="frame6" style="display: block; opacity: 1;">
+						<div id="f6_obj1" class="sprite txt4" style="opacity: 1; left: 20px;"></div>
+                        <div id="f6_obj2" class="sprite sub1" style="opacity: 1;"></div>
+                        <div id="f6_obj3" class="sprite sub2" style="opacity: 1;"></div>
+                        <!-- <div id="ctaBox"></div> -->
+                        <div id="cta" class="sprite cta" style="opacity: 1;"></div>
+                    </div>
+                    <div id="frame5" style="display: block; opacity: 1;">
+                        <div id="f5_obj1" class="sprite txt5" style="opacity: 0; left: 21px;"></div>
+                    </div>
+                    <div id="frame4" style="display: block; opacity: 1;">
+                        <div id="f4_obj1" class="sprite txt4" style="opacity: 0; left: 20px;"></div>
+                        <div id="f4_obj2" class="sprite sub1" style="opacity: 0;"></div>
+                        <div id="f4_obj3" class="sprite sub2" style="opacity: 0;"></div>
+                    </div>
+                    <div id="frame3" style="display: block; opacity: 1;">
+                        <div id="f3_obj1" class="sprite txt3" style="opacity: 0; left: 20px;"></div>
+                    </div>
+                    <div id="frame2" style="display: block; opacity: 1;">
+                        <div id="f2_obj1" class="sprite txt2" style="opacity: 0; left: 20px;"></div>
+                    </div>
+                    <div id="frame1" style="display: block; opacity: 1;">
+	                    <div id="f1_obj1" class="sprite txt1" style="opacity: 0; left: 20px;"></div>
+					</div>
+                    <div id="logo" class="sprite logo"></div>
+            		<div id="hotSpot"></div>
+            	</div>
+            </div>
+            <script src="TweenLite.min.js"></script>
+			<script src="TimelineLite.min.js"></script>
+            <script src="EasePack.min.js"></script>
+            <script src="CSSPlugin.min.js"></script>
+            <script src="main.js" type="text/javascript"></script>
+            <script type="text/javascript">
+            var hotSpot = document.getElementById("hotSpot");
+
+			//----------------------------- Regular clicktag -------------------------------//
+			var clickTag = "http://www.verizon.com";
+        	hotSpot.addEventListener("click",function(){
+           		window.open(window.clickTag);
+	       	});
+			//*****************************************************************************//
+			
+			// -------------------------------doubleClick Exit--------------------------- //
+			/*function bgExitHandler(e) {
+				Enabler.exit("Background_Exit", "http://www.verizon.com");
+				}
+			hotSpot.addEventListener("click", bgExitHandler, false);*/
+			//***************************************************************************//
+			
+			// --------------------------------CTA Rollover---------------------------- //
+			hotSpot.addEventListener('mouseover',hotSpotRollOver);
+            hotSpot.addEventListener('mouseout',hotSpotRollOut);
+			
+			function hotSpotRollOver(ev){
+                // standard effect
+				//document.getElementById('ctaBox').style.backgroundColor='#A80309';
+                // non standard effect
+                TweenLite.to(cta, .2, { alpha: .7 });
+			}
+            function hotSpotRollOut(ev){
+                // standard effect
+                //document.getElementById('ctaBox').style.backgroundColor='#CD040B';
+                // non standard effect
+                TweenLite.to(cta, .2, { alpha: 1 });
+            }
+			//*************************************************************************//
+        </script>
+        
+        
+</body></html>
