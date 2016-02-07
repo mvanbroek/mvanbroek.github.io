@@ -12,20 +12,20 @@ img.displayed {
   margin-right: auto;
 }
 
-iframe{
+/*iframe{
   iframe-align: center;
+}*/
+
+img{
+  width: 200px;
 }
 
-/*img{*/
-  /*width: 200px;*/
-}
-
-p {
+/*p {
     padding-top: 50px;
     padding-right: 30px;
     padding-bottom: 0px;
     padding-left: 30px;
-}
+}*/
 
 body{
   margin: 0px 30px 0px 30px;
